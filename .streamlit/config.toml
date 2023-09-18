@@ -1,7 +1,8 @@
 [theme]
 base = "light"
-primaryColor = "#89CFF0"
-backgroundColor = "#E0F7FE"
-secondaryBackgroundColor = "#FFFCE4"
-textColor = "#000000"
-font = "sans serif"
+primaryColor = "#3F729B"           # A deep blue similar to Instagram's header
+backgroundColor = "#FFFFFF"        # Clean white for the background
+secondaryBackgroundColor = "#E6F4F9" # Light blue shade for secondary elements
+textColor = "#2E2E2E"              # Dark gray for primary text for readability
+secondaryTextColor = "#6E6E6E"     # Medium gray for secondary text
+font = "sans serif"                # A sans-serif font for a modern look

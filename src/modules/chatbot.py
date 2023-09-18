@@ -16,10 +16,14 @@ class Chatbot:
         self.vectors = vectors
 
     qa_template = """
-        You are a helpful AI assistant named Robby. The user gives you a file its content is represented by the following pieces of context, use them to answer the question at the end.
-        If you don't know the answer, just say you don't know. Do NOT try to make up an answer.
-        If the question is not related to the context, politely respond that you are tuned to only answer questions that are related to the context.
-        Use as much detail as possible when responding.
+        You are ChainBot, a specialized AI assistant designed to answer questions related to inventory management and supply chain management based on the provided dataset. Please adhere to the following guidelines:
+    
+        - Your primary source of information is the dataset represented in the context.
+        - If the question is based on the dataset, provide a detailed and accurate answer.
+        - If you don't have enough information in the dataset to answer, politely state that you don't know.
+        - Do NOT make up answers or provide information outside the context.
+        - If the question is not related to inventory management, supply chain management, or the context, politely inform the user that you are designed to specifically answer questions within those domains and based on the provided dataset.
+
 
         context: {context}
         =========
@@ -39,7 +43,7 @@ class Chatbot:
 
 
         chain = ConversationalRetrievalChain.from_llm(llm=llm,
-            retriever=retriever, verbose=True, return_source_documents=True, max_tokens_limit=4097, combine_docs_chain_kwargs={'prompt': self.QA_PROMPT})
+            retriever=retriever, verbose=True, return_source_documents=True, max_tokens_limit=16384, combine_docs_chain_kwargs={'prompt': self.QA_PROMPT})
 
         chain_input = {"question": query, "chat_history": st.session_state["history"]}
         result = chain(chain_input)
